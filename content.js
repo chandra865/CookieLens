@@ -5,7 +5,8 @@
 
 (function () {
   // Declare UI elements and constants for current page
-  let overlay, btnGrantShow, btnRevoke, btnClear, listEl, statusEl;
+  let overlay, btnGrantShow,  btnClear, listEl, statusEl;
+  //btnRevoke
   const pageUrl = location.href; // Full URL of current page
   const urlObj = new URL(pageUrl); // Parsed URL object
   const domain = urlObj.hostname; // Domain (e.g., example.com)
@@ -33,19 +34,20 @@
         }</div>
         <div class="cl-actions">
           <button id="cl-grant">Grant Cookie Access</button>
-          <button id="cl-revoke" disabled>Revoke Access</button>
           <button id="cl-clear" disabled>Clear Cookies</button>
         </div>
         <div id="cl-status"></div>
         <div id="cl-list"></div>
       </div>`;
+    //<button id="cl-revoke" disabled>Revoke Access</button>
+
 
     // Inject overlay into page
     document.body.appendChild(overlay);
 
     // Get references to buttons and elements
     btnGrantShow = overlay.querySelector("#cl-grant");
-    btnRevoke = overlay.querySelector("#cl-revoke");
+    //btnRevoke = overlay.querySelector("#cl-revoke");
     btnClear = overlay.querySelector("#cl-clear");
     listEl = overlay.querySelector("#cl-list");
     statusEl = overlay.querySelector("#cl-status");
@@ -56,7 +58,7 @@
 
     // Button handlers
     btnGrantShow.onclick = requestPermission;
-    btnRevoke.onclick = revokePermission;
+    //btnRevoke.onclick = revokePermission;
     btnClear.onclick = clearCookies;
 
     // On first load, check whether permission already exists
@@ -72,7 +74,7 @@
       // Permission granted
       btnGrantShow.textContent = "Show Cookies";
       btnGrantShow.onclick = showCookies;
-      btnRevoke.disabled = false;
+      //btnRevoke.disabled = false;
       btnClear.disabled = false;
       setStatus("Permission granted.");
     } else {
@@ -84,20 +86,23 @@
   }
 
   // Revoke cookie permission
-  async function revokePermission() {
-    setStatus("Revoking permission…");
-    const resp = await sendMessage("REVOKE_PERMISSION", { url: pageUrl });
+// async function revokePermission() {
+//   setStatus("Revoking permission…");
+//   const resp = await sendMessage("REVOKE_PERMISSION", { url: pageUrl });
 
-    if (resp?.ok) {
-      // Reset UI to initial state
-      setStatus("Permission revoked.");
-      btnGrantShow.textContent = "Grant Cookie Access";
-      btnGrantShow.onclick = requestPermission;
-      btnRevoke.disabled = true;
-      btnClear.disabled = true;
-      listEl.innerHTML = "";
-    }
-  }
+//   if (resp?.ok) {
+//     setStatus("Permission revoked.");
+//     btnGrantShow.textContent = "Grant Cookie Access";
+//     btnGrantShow.onclick = requestPermission;
+//     btnRevoke.disabled = true;
+//     btnClear.disabled = true;
+//     listEl.innerHTML = "";
+//   } else {
+//     setStatus(`Failed: ${resp?.error || "Could not revoke permission."}`);
+//   }
+// }
+
+
 
   // Clear all cookies for current domain
   async function clearCookies() {
@@ -165,13 +170,13 @@
       // Already has permission
       btnGrantShow.textContent = "Show Cookies";
       btnGrantShow.onclick = showCookies;
-      btnRevoke.disabled = false;
+      //btnRevoke.disabled = false;
       btnClear.disabled = false;
     } else {
       // No permission yet
       btnGrantShow.textContent = "Grant Cookie Access";
       btnGrantShow.onclick = requestPermission;
-      btnRevoke.disabled = true;
+      //btnRevoke.disabled = true;
       btnClear.disabled = true;
     }
   }

@@ -1,29 +1,135 @@
+:root {
+  --cl-bg: #1b1f2a;
+  --cl-card: rgba(30, 34, 45, 0.95); /* darker, less transparent */
+  --cl-glass: rgba(255,255,255,0.08);
+  --cl-accent: #6bbd4f;
+  --cl-accent-hover: #5ba242;
+  --cl-accent-2: #78d1ca;
+  --cl-text: #f9f9f9;
+  --cl-muted: #a0a7b8;
+  --cl-radius: 12px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
 #cookie-lens-overlay.hidden { display: none; }
 #cookie-lens-overlay {
-position: fixed;
-top: 20px;
-right: 20px;
-z-index: 2147483647;
-font-family: Arial, sans-serif;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2147483647;
+  color: var(--cl-text);
+  width: 340px;
+  max-width: calc(100vw - 40px);
 }
+
 #cookie-lens-overlay .cl-card {
-background: white;
-border: 1px solid #ddd;
-border-radius: 8px;
-padding: 10px;
-width: 300px;
-box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: var(--cl-card);
+  backdrop-filter: blur(6px) saturate(1.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--cl-radius);
+  padding: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
 }
+
 #cookie-lens-overlay .cl-header {
-display: flex;
-justify-content: space-between;
-margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
 }
+
+#cookie-lens-overlay .cl-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cl-text);
+}
+
 #cookie-lens-overlay button {
-padding: 6px 10px;
-margin-top: 8px;
-border: 1px solid #ccc;
-border-radius: 4px;
-background: #f9f9f9;
-cursor: pointer;
+  border: 0;
+  border-radius: var(--cl-radius);
+  background: var(--cl-accent);
+  color: #fff;
+  padding: 8px 12px;
+  margin-top: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+#cookie-lens-overlay button:hover {
+  background: var(--cl-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+#cookie-lens-overlay button:disabled {
+  background: var(--cl-glass);
+  color: var(--cl-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+#cookie-lens-overlay .cl-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+#cookie-lens-overlay #cl-status {
+  margin: 10px 0;
+  font-size: 13px;
+  color: var(--cl-muted);
+}
+
+#cookie-lens-overlay #cl-list {
+  max-height: 240px;
+  overflow-y: auto;
+  border-radius: var(--cl-radius);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 10px;
+  background: rgba(255,255,255,0.03);
+}
+
+#cookie-lens-overlay #cl-list > div {
+  padding: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-size: 13px;
+  word-break: break-all;
+  color: var(--cl-text);
+}
+
+#cookie-lens-overlay #cl-list > div:last-child {
+  border-bottom: none;
+}
+
+/* Close button */
+#cookie-lens-overlay #cl-close {
+  background: transparent;
+  border: 0;
+  font-size: 16px;
+  padding: 4px 8px;
+  color: var(--cl-muted);
+  cursor: pointer;
+  border-radius: var(--cl-radius);
+  transition: background 0.2s, color 0.2s;
+}
+#cookie-lens-overlay #cl-close:hover {
+  background: var(--cl-glass);
+  color: var(--cl-text);
+}
+
+/* Scrollbar styling */
+#cookie-lens-overlay #cl-list::-webkit-scrollbar {
+  width: 6px;
+}
+#cookie-lens-overlay #cl-list::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+}
+
+/* Consistency across sites */
+html, body, #cookie-lens-overlay {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial !important;
 }

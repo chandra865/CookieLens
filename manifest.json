@@ -1,6 +1,6 @@
 {
 "manifest_version": 3,
-"name": "CookieLens",
+"name": "Cookie Lens",
 "version": "0.1.0",
 "description": "Minimal, secure cookie viewer with runtime permission and live updates.",
 "permissions": ["scripting", "activeTab"],
