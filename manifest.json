@@ -1,0 +1,22 @@
+{
+"manifest_version": 3,
+"name": "CookieLens",
+"version": "0.1.0",
+"description": "Minimal, secure cookie viewer with runtime permission and live updates.",
+"permissions": ["scripting", "activeTab"],
+"host_permissions": [],
+"background": {
+"service_worker": "background.js"
+},
+"action": {
+"default_title": "Cookie Lens"
+},
+"content_scripts": [
+{
+"matches": ["<all_urls>"],
+"js": ["content.js"],
+"css": ["styles.css"],
+"run_at": "document_idle"
+}
+]
+}
