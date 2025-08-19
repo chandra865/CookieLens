@@ -5,7 +5,7 @@ A secure, lightweight Chrome extension that shows webpage URL, domain, HTTPS sta
 ---
 ## Demo
 
-** Video Demo:- ** [watch](https://drive.google.com/file/d/1QtZlDEdDzcTe8hrOQQ3r521HNZwK8mlz/view?usp=sharing)
+**Video Demo:-** [watch](https://drive.google.com/file/d/1QtZlDEdDzcTe8hrOQQ3r521HNZwK8mlz/view?usp=sharing)
 
 ---
 
