@@ -70,7 +70,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
 
     // Revoke permission
-    if (type === 'REVOKE_PERMISSION') {
+  if (type === "REVOKE_PERMISSION") {
       const originPattern = originPatternFromUrl(url);
       chrome.permissions.remove(
         { permissions: ['cookies'], origins: [originPattern] },
