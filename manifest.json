@@ -4,7 +4,8 @@
 "version": "0.1.0",
 "description": "Minimal, secure cookie viewer with runtime permission and live updates.",
 "permissions": ["scripting", "activeTab"],
-"host_permissions": [],
+"optional_permissions": ["cookies"],
+"optional_host_permissions": ["<all_urls>"],
 "background": {
 "service_worker": "background.js"
 },
